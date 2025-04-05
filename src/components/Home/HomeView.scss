@@ -1,55 +1,73 @@
-/* src/pages/components/dashboard.scss */
-
 .home {
-    display: flex;
-    height: 100vh;
-  }
-  
-  .sidebar {
-    width: 220px;
-    background-color: #1e90ff;
-    color: white;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  .sidebar h3 {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 220px;
+  background-color: #1e90ff;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  h3 {
     margin-bottom: 1rem;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
-  
-  .sidebar button,
-  .sidebar a {
+
+  button,
+  a {
     background: none;
     border: none;
     color: white;
     text-align: left;
     cursor: pointer;
     font-size: 1rem;
-  
+
     &:hover {
       text-decoration: underline;
     }
   }
-  
-  .content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+}
+
+.weather-content {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+
+  .loading-text,
+  .empty-text {
+    font-size: 1.2rem;
+    color: #555;
+    margin-top: 2rem;
   }
-  
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    background-color: white;
-    border-bottom: 1px solid #ddd;
+
+  .forecast-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    max-width: 100%;
+    gap: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    justify-items: center;
+    @media (min-width: 1800px) {
+      grid-template-columns: repeat(8, 1fr);
+    }
+
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
   }
-  
-  .weather-display {
-    flex: 1;
-    padding: 2rem;
+  .grouped-forecast {
+    display: block;
+    gap: 1rem;
+    margin-bottom: 2rem;
   }
-  
+}
