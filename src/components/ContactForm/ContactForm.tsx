@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import './contactform.scss';
+import { useTranslation } from 'react-i18next';
 
 export default function ContactForm() {
+  const { t } = useTranslation();
   const [form, setForm] = useState({
     name: '',
     dob: '',
@@ -52,33 +54,33 @@ export default function ContactForm() {
   return (
     <form className="contact-form" onSubmit={handleSubmit}>
       <label>
-        Nombre
+        {t('name')}
         <input name="name" value={form.name} onChange={handleChange} />
       </label>
 
       <label>
-        Fecha de nacimiento
+      {t('dateOfBirth')}
         <input type="date" name="dob" value={form.dob} onChange={handleChange} />
         {errors.dob && <p className="error">{errors.dob}</p>}
       </label>
 
       <label>
-        Ciudad
+      {t('city')}
         <input name="city" value={form.city} onChange={handleChange} />
       </label>
 
       <label>
-        Email
+      {t('email')}
         <input type="email" name="email" value={form.email} onChange={handleChange} />
       </label>
 
       <label>
-        Teléfono
+      {t('mobile')}
         <input type="tel" name="phone" value={form.phone} onChange={handleChange} />
       </label>
 
       <button type="submit" disabled={!isValid}>
-        Enviar
+      {t('send')}
       </button>
     </form>
   );

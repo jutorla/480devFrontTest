@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import HomeView from '../components/Home/HomeView';
 import { useWeather } from '../hooks/useWeather';
 import { CITY_LIST } from '../constants/cities';
+import { useTranslation } from 'react-i18next';
 
 interface ForecastItem {
   dt: number;
@@ -21,15 +22,16 @@ export default function Home() {
   const [showContactModal, setShowContactModal] = useState(false);
   const [showExplorerModal, setShowExplorerModal] = useState(false);
   const [groupedForecasts, setGroupedForecasts] = useState<Record<string, ForecastItem[]>>({});
+  const { i18n } = useTranslation();
 
 
-  const { data, loading, fetchByCity } = useWeather();
+  const { data, loading, error, fetchByCity } = useWeather();
 
   useEffect(() => {
     if (selectedCity) {
-      fetchByCity(selectedCity, 'en');
+      fetchByCity(selectedCity, i18n.language as 'en' | 'es');
     }
-  }, [selectedCity]);
+  }, [selectedCity, i18n.language]);
 
   const groupForecastsByDay = (list: ForecastItem[]) => {
     return list.reduce<Record<string, ForecastItem[]>>((acc, forecast) => {
@@ -45,7 +47,7 @@ export default function Home() {
       const sliced = data.list.slice(0, 40);
       const grouped = groupForecastsByDay(sliced);
       setGroupedForecasts(grouped);
-  
+
       const today = new Date().toISOString().split('T')[0];
       setOpenDays({ [today]: true });
     }
@@ -60,6 +62,16 @@ export default function Home() {
     }
   }, [groupedForecasts]);
 
+  useEffect(() => {
+    if (error) {
+      setSelectedCity(null);
+      setGroupedForecasts({});
+      setOpenDays({});
+    }
+  }, [error]);
+
+
+
   const toggleDay = (dateKey: string) => {
     setOpenDays((prev) => ({
       ...prev,
@@ -69,18 +81,18 @@ export default function Home() {
 
   return (
     <HomeView
-      cities={CITY_LIST}
+      trendingCities={CITY_LIST}
       selectedCity={selectedCity}
       onSelectCity={setSelectedCity}
       showContactModal={showContactModal}
       setShowContactModal={setShowContactModal}
       showExplorerModal={showExplorerModal}
       setShowExplorerModal={setShowExplorerModal}
-      city={data?.city.name || ''}
       groupedForecasts={groupedForecasts}
       openDays={openDays}
       toggleDay={toggleDay}
       loading={loading}
+      error={error}
     />
   );
 }

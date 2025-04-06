@@ -1,21 +1,42 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Login from '../pages/Login';
 import Home from '../pages/Home';
-import { useState } from 'react';
 import Navbar from '../components/Navbar/Navbar';
+import { AuthProvider, useAuth } from '../context/AuthContext';
 
+function PrivateRoute({ children }: { children: JSX.Element }) {
+  const { isAuthenticated } = useAuth();
+  return isAuthenticated ? children : <Navigate to="/login" replace />;
+}
 
-export default function AppRouter() {
-    const [lang, setLang] = useState<'en' | 'es'>('en');
-    const [login, setLogin] = useState(true);
+function RouterContent() {
+  const { isAuthenticated, logout } = useAuth();
 
   return (
-    <BrowserRouter>
-          <Navbar currentLang={lang} onLanguageChange={setLang} login={login} setLogin={setLogin}/>
+    <>
+      <Navbar login={isAuthenticated} setLogin={logout} />
       <Routes>
         <Route path="/login" element={<Login />} />
-        <Route path="/home" element={<Home />} />
+        <Route
+          path="/home"
+          element={
+            <PrivateRoute>
+              <Home />
+            </PrivateRoute>
+          }
+        />
+        <Route path="*" element={<Navigate to={isAuthenticated ? "/home" : "/login"} />} />
       </Routes>
+    </>
+  );
+}
+
+export default function AppRouter() {
+  return (
+    <BrowserRouter>
+      <AuthProvider>
+        <RouterContent />
+      </AuthProvider>
     </BrowserRouter>
   );
 }

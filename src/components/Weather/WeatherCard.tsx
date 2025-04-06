@@ -1,7 +1,8 @@
 import './WeatherCard.scss';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
-  city: string;
+  city: string | null;
   description: string;
   icon: string;
   temp: number;
@@ -21,15 +22,16 @@ export default function WeatherCard({
   tempMax,
   timestamp,
 }: Props) {
+  const {i18n } = useTranslation();
 
 const date = new Date(timestamp * 1000);
-const day = date.toLocaleDateString('es-ES', {
+const day = date.toLocaleDateString(i18n.language, {
   weekday: 'long',
   day: 'numeric',
   month: 'long',
 });
 
-const time = date.toLocaleTimeString('es-ES', {
+const time = date.toLocaleTimeString(i18n.language, {
   hour: '2-digit',
   minute: '2-digit',
 });
