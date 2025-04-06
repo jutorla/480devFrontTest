@@ -12,8 +12,8 @@ This project is a technical test for developing a single-page application (SPA) 
 ## **Installation & Setup**  
 1. Clone the repository:  
    ```sh
-   git clone https://github.com/jutorla/devTest.git
-   cd devTest
+   git clone https://github.com/jutorla/480devFrontTest.git
+   cd 480devFrontTest
    ```  
 2. Install dependencies:  
    ```sh
