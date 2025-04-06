@@ -59,12 +59,12 @@
     padding-top: 1rem;
     padding-bottom: 1rem;
     justify-items: center;
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
     @media (min-width: 1800px) {
       grid-template-columns: repeat(8, 1fr);
     }
 
-    max-height: calc(100vh - 4rem);
-    overflow-y: auto;
   }
   .grouped-forecast {
     display: block;

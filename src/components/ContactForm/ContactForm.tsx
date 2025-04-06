@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import './contactform.scss';
+import './ContactForm.scss';
 import { useTranslation } from 'react-i18next';
 
 export default function ContactForm() {

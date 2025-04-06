@@ -4,7 +4,7 @@ import Home from '../pages/Home';
 import Navbar from '../components/Navbar/Navbar';
 import { AuthProvider, useAuth } from '../context/AuthContext';
 
-function PrivateRoute({ children }: { children: JSX.Element }) {
+function PrivateRoute({ children }: { children: React.JSX.Element }) {
   const { isAuthenticated } = useAuth();
   return isAuthenticated ? children : <Navigate to="/login" replace />;
 }
