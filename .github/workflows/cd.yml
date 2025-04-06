@@ -1,0 +1,16 @@
+name: CD
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Trigger Render Deploy Hook
+        run: curl -X POST https://api.render.com/deploy/srv-cvpf2j8dl3ps7381i1k0?key=j03f6Z05CdQ

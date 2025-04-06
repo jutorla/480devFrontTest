@@ -1,5 +1,5 @@
 import { ReactNode, useEffect } from 'react';
-import './modal.scss';
+import './Modal.scss';
 
 interface Props {
   isOpen: boolean;
