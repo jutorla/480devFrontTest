@@ -1,4 +1,5 @@
 import './LoginView.scss';
+import { useTranslation } from 'react-i18next';
 
 interface LoginProps {
   email: string;
@@ -9,6 +10,7 @@ interface LoginProps {
   error: boolean;
 }
 
+
 export default function LoginView({
   email,
   password,
@@ -16,14 +18,17 @@ export default function LoginView({
   onPasswordChange,
   onSubmit,
   error,
-}: LoginProps) {return (
+}: LoginProps) {
+  const { t } = useTranslation();
+
+  return (
     <div className={'login-container'}>
       <div className={'login-card'}>
-        <h2 className={'login-title'}>WIRT? (Will It Rain Today)</h2>
-        {error && <p className={'login-error'}>Please enter valid email and password</p>}
+        <h2 className={'login-title'}>WIRT</h2>
+        {error && <p className={'login-error'}> {t('validEmailPassword')}</p>}
         <form onSubmit={onSubmit}>
         <div className={'login-group ' + (error ? 'error' : '')}>
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">{t('email')}</label>
             <input
               id="email"
               value={email}
@@ -32,7 +37,7 @@ export default function LoginView({
           </div>
 
           <div className={'login-group ' + (error ? 'error' : '')}>
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">{t('password')}</label>
             <input
               id="password"
               type="password"
@@ -42,7 +47,7 @@ export default function LoginView({
           </div>
 
           <button type="submit" className={'login-button'}>
-            Login
+          {t('login')}
           </button>
         </form>
       </div>

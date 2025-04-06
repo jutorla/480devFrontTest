@@ -1,0 +1,19 @@
+{
+  "trendingCities": "Ciudades populares",
+  "searchCity": "Buscar ciudad",
+  "contact": "Contacto",
+  "loadingWeather": "Cargando clima...",
+  "selectCityPrompt": "Selecciona una ciudad para ver el clima",
+  "today": "Hoy",
+  "name": "Nombre",
+  "validEmailPassword": "Por favor, introduce un correo y una contraseña válidos",
+  "email": "Correo electrónico",
+  "password": "Contraseña",
+  "login": "Iniciar sesión",
+  "cityName": "Nombre de la ciudad",
+  "dateOfBirth": "Fecha de nacimiento",
+  "mobile": "Número de teléfono",
+  "city": "Ciudad",
+  "search": "Buscar",
+  "genericError": "Algo salió mal, por favor intentalo de nuevo"
+}

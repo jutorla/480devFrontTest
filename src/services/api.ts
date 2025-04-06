@@ -21,12 +21,13 @@ export interface ForecastWeatherResponse {
 }
 
 
-export async function getWeatherForecast(city: string): Promise<ForecastWeatherResponse> {
-  const url = `${BASE_URL}?q=${encodeURIComponent(city)}&appid=${APP_ID}&units=metric`;
+export async function getWeatherForecast(city: string, lang: string): Promise<ForecastWeatherResponse> {
+
+  const url = `${BASE_URL}?q=${encodeURIComponent(city)}&appid=${APP_ID}&units=metric&lang=${lang}`; 
 
   const response = await fetch(url);
   if (!response.ok) {
-    throw new Error('Error al obtener el clima');
+    throw new Error('genericError');
   }
 
   return await response.json();

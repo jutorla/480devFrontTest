@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import './CitieExplorer.scss';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   onSearch: (city: string) => void;
@@ -27,21 +28,21 @@ export default function CitieExplorer({ onSearch, onClose }: Props) {
     onSearch(form.city.trim());
     onClose();
   };
+  const { t } = useTranslation();
 
   return (
     <form className="contact-form" onSubmit={handleSubmit}>
       <label>
-        City Name
+       {t('cityName')}
         <input
           name="city"
           value={form.city}
           onChange={handleChange}
-          placeholder="Ej. Madrid"
         />
       </label>
 
       <button type="submit" disabled={!isValid}>
-        Search
+      {t('search')}
       </button>
     </form>
   );

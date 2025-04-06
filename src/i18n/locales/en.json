@@ -1,0 +1,20 @@
+{
+    "trendingCities": "Trending cities",
+    "searchCity": "Search City",
+    "contact": "Contact",
+    "loadingWeather": "Loading weather...",
+    "selectCityPrompt": "Select a city to see the weather",
+    "today": "Today",
+    "name": "Name",
+    "validEmailPassword":"Please enter valid email and password",
+    "email": "Email",
+    "password": "Password",
+    "login": "Login",
+    "cityName": "City Name",
+    "dateOfBirth":"Date of birth",
+    "mobile": "Mobile Number",
+    "city": "City",
+    "search": "Search",
+    "genericError": "Something went wrong, please try again"
+    }
+  
