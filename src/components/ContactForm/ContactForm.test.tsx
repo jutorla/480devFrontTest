@@ -58,7 +58,7 @@ describe('ContactForm', () => {
       target: { value: futureString },
     });
 
-    expect(screen.getByText(/fecha anterior a hoy/i)).toBeInTheDocument();
+    expect(screen.getByText(/Date of birth should not be in future/i)).toBeInTheDocument();
     const submitButton = screen.getByRole('button', { name: /send/i });
     expect(submitButton).toBeDisabled();
   });

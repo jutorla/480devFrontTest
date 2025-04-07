@@ -1,6 +1,6 @@
 # **Technical Test - Weather App**  
 
-This project is a technical test for developing a single-page application (SPA) in React.
+This project is a technical test for developing a single-page application (SPA) in React. Use test@test.com:test to login 
 
 ## **Tech Stack**  
 - React (Vite)  
@@ -43,7 +43,8 @@ This project is a technical test for developing a single-page application (SPA) 
  ├── constants/       # Constants utils
  ├── utils/           # Api call logic 
  ├── routes/          # Routing configuration  
- ├── hooks/           # Custom Hooks  
+ ├── hooks/           # Custom Hooks 
+ ├── context/         # Auth context   
  ├── i18n/            # Translation with i18n  
  ├── README.md        # Documentation  
 ```
