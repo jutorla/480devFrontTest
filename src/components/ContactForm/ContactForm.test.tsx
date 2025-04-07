@@ -63,10 +63,10 @@ describe('ContactForm', () => {
     expect(submitButton).toBeDisabled();
   });
 
-  it('calls alert on valid form submission', () => {
+  it('shows a toast on valid form submission and hides it after timeout', async () => {
     setup();
 
-    vi.spyOn(window, 'alert').mockImplementation(() => {});
+    vi.useFakeTimers();
 
     fireEvent.change(screen.getByLabelText(/name/i), { target: { value: 'Julian' } });
     fireEvent.change(screen.getByLabelText(/city/i), { target: { value: 'Valencia' } });
@@ -75,8 +75,7 @@ describe('ContactForm', () => {
     fireEvent.change(screen.getByLabelText(/date of birth/i), {
       target: { value: '1990-12-12' },
     });
-
     fireEvent.click(screen.getByRole('button', { name: /send/i }));
-    expect(window.alert).toHaveBeenCalledWith('Enviado correctamente');
+    expect(screen.getByText(/reaching us/i)).toBeInTheDocument();
   });
 });
