@@ -16,6 +16,7 @@ export default function ContactForm() {
   const [errors, setErrors] = useState({
     dob: '',
   });
+  const [showToast, setShowToast] = useState(false);
 
   useEffect(() => {
     const { name, dob, city, email, phone } = form;
@@ -48,7 +49,11 @@ export default function ContactForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert('Enviado correctamente');
+    setShowToast(true);
+
+    setTimeout(() => {
+      setShowToast(false);
+    }, 3000);
   };
 
   return (
@@ -59,29 +64,34 @@ export default function ContactForm() {
       </label>
 
       <label>
-      {t('dateOfBirth')}
+        {t('dateOfBirth')}
         <input type="date" name="dob" value={form.dob} onChange={handleChange} />
         {errors.dob && <p className="error">{errors.dob}</p>}
       </label>
 
       <label>
-      {t('city')}
+        {t('city')}
         <input name="city" value={form.city} onChange={handleChange} />
       </label>
 
       <label>
-      {t('email')}
+        {t('email')}
         <input type="email" name="email" value={form.email} onChange={handleChange} />
       </label>
 
       <label>
-      {t('mobile')}
+        {t('mobile')}
         <input type="tel" name="phone" value={form.phone} onChange={handleChange} />
       </label>
 
       <button type="submit" disabled={!isValid}>
-      {t('send')}
+        {t('send')}
       </button>
+      {showToast && (
+        <div className="toast">
+          {t('reachingUs')}
+        </div>
+      )}
     </form>
   );
 }

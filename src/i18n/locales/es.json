@@ -17,5 +17,6 @@
   "search": "Buscar",
   "genericError": "Algo salió mal, por favor intentalo de nuevo",
   "send": "Enviar",
-  "dobError": "La fecha de nacimiento no puede ser en el futuro"
+  "dobError": "La fecha de nacimiento no puede ser en el futuro",
+  "reachingUs": "Gracias por contactarnos"
 }
