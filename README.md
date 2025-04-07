@@ -21,7 +21,7 @@ This project is a technical test for developing a single-page application (SPA) 
    ```  
 3. Start development server:  
    ```sh
-   npm run start
+   npm run dev
    ```  
 4. Build:  
    ```sh
