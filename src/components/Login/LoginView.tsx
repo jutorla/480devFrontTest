@@ -29,12 +29,14 @@ export default function LoginView({
         <form onSubmit={onSubmit}>
         <div className={'login-group ' + (error ? 'error' : '')}>
           <label htmlFor="email">{t('email')}</label>
-            <input
-              id="email"
-              value={email}
-              onChange={onEmailChange}
-            />
-          </div>
+          <input
+            id="email"
+            type="email"
+            value={email}
+            onChange={onEmailChange}
+            placeholder='test@test.com'
+          />
+        </div>
 
           <div className={'login-group ' + (error ? 'error' : '')}>
             <label htmlFor="password">{t('password')}</label>
@@ -43,6 +45,7 @@ export default function LoginView({
               type="password"
               value={password}
               onChange={onPasswordChange}
+              placeholder='test'
             />
           </div>
 

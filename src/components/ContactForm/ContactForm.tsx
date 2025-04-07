@@ -27,7 +27,7 @@ export default function ContactForm() {
     const dobIsValid = birthDate < today;
 
     setErrors({
-      dob: dob && !dobIsValid ? 'Debe ser una fecha anterior a hoy' : ''
+      dob: dob && !dobIsValid ? t('dobError') : ''
     });
 
     const allFieldsFilled = !!(name && dob && city && email && phone);

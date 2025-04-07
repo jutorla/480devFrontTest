@@ -25,7 +25,7 @@ export default function Navbar({ login, setLogin }: Props) {
       </select>
 
       {login && (
-        <button onClick={setLogin}>
+        <button className='logout-button' onClick={setLogin}>
           {t('logout', 'Logout')}
         </button>
       )}

@@ -7,7 +7,7 @@ interface AuthContextType {
 }
 
 const MOCK_USER = {
-  email: 'test',
+  email: 'test@test.com',
   password: 'test',
 };
 
